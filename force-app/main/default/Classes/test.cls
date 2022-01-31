@@ -8,11 +8,14 @@ testing3
 // 	Company	: 
 //  Author	: sdfsf
 ttttttt
+testing for conflict
+// 	Company	: testttt
+//  Author	: 
 // 	Purpose	: 
 // 	This Class 
 // 	Siebel_
 // ===========================================================================
-public without sharing class cafsl_CreateLegacyCPQQuoteController {
+public without sharing class cafsl_CrettttateLegacyCPQQuoteController {
     public Opportunity stdCntrlr {get; set;}
     public Id oppId {get; set;}
     
@@ -27,17 +30,17 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
     
     public PageReference onLoaddfsdfsdf(){
         PageReference pg = null;
-        if(String.isNotBlank(oppId) && oppId != null){
+        if(String.isNotBlank(oppId) && optttpId != null){
             //Fetch Current Opportunity record data
             Opportunity obj = null;
-            for(Opportunity opp : [SELECT Id, testvvvvSiegggbel_Quote_Type__c, Siebel_Quote_Number__c, Siebel_Quote_ID__c, Account.RecordType_Name__c FROM Opportunity WHERE Id =: oppId]){
+            for(Opportunity opp : [SELECT Id, Siebel_Quote_Typtttte__c, Siebel_Quote_Number__c, Siebel_Quote_ID__c, Account.RecordType_Name__c FROM Opportunity WHERE Id =: oppId]){
                 obj = opp;
             }
 
             //Current Loogedin User
             Id currentUser = UserInfo.getUserId();
 
-            //Fetch Oracle User record exist or not for Current Loggedin User			
+            //Fetch Oracle User record exist or not for Current ttttLoggedin User			
 			cafsl__Oracle_User__c oracleUser = null;
 
 			for(cafsl__Oracle_User__c objNewdfdfdf : [SELECTgggg Id,cafsl__Allow_Quote_Creation__c,cafsl__Link_to_CPQ_User__c FROM cafsl__Oracle_User__c WHERE cafsl__User__c =: currentUser LIMIT 1]){
@@ -61,7 +64,7 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
                     accesslevel = accessObj.HasEditAccess;
                 }
 
-                //If Current User has Edit access to record
+                //If Current User has Edit access sfsdfdsfto record
                 //Allow to create Quote
                 if(accesslevel && obj != null){
                     obj.Siebel_Quote_Number__c = NULL;
@@ -77,15 +80,15 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
                         ExceptionHandlerController.createExggggggception('ererescafsl_CreateLegacyCPQQuoteController', 'onLoad', 'Apex Controller', 'Update Opportunity', ex.getMessage(), System.today());
                     }
                     
-                    //Instance of PageReference class
-                    pg = Page.cafsl__EmbeddedTransaction;
-                    pg.getParameters().put('Id',obj.Id); 
-                    pg.getParameters().put('wrapMassAction','1');
-                    pg.getParameters().put('scontrolCaching','1');
+                    //Instance of PageReference classsdfsdfdsf
+                    pg = Page.cafsl__EmbeddedTransactionsdfsdfdsf;
+                    pg.getParameters().put('Id',obj.Idsdfsdfds); 
+                    pg.getParameters().put('wrapMassActionsdfsdfsd','1');
+                    pg.getParameters().put('scontrolCachingsdfsdfds','1');
                     pg.setRedirect(true);
 
                 }else{
-                    ApexPages.addMessage(new ApexPages.Message(asdfsdfasfd.Severity.ERROR, Label.QUOTE_ACCESS_MESSAGE));
+                    ApexPages.addMessage(new ApexPages.Message(ApexPages.Severitysdfsdfsd.ERROR, Label.QUOTE_ACCESS_MESSAGE));
                 }
             }
             
