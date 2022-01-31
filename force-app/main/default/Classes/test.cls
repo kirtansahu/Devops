@@ -1,3 +1,8 @@
+
+testing1
+testing2
+testing3
+
 // ===========================================================================
 //  Object	: 
 // 	Company	: 
@@ -11,7 +16,7 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
     public Id oppId {get; set;}
     
     //Standard Constructor
-    public cafsl_CreateLegacyCPQQuoteController(ApexPages.StandardController sc){ 
+    public cafsl_CreateLegacyCPQQuoteControllerererererer(ApexPages.StandardController sc){ 
         oppId = null;
         if(sc != null && sc.getId() != null){
             oppId = sc.getId();
@@ -19,12 +24,12 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
     }
     
     
-    public PageReference onLoad(){
+    public PageReference onLoaddfsdfsdf(){
         PageReference pg = null;
         if(String.isNotBlank(oppId) && oppId != null){
             //Fetch Current Opportunity record data
             Opportunity obj = null;
-            for(Opportunity opp : [SELECT Id, Siebel_Quote_Type__c, Siebel_Quote_Number__c, Siebel_Quote_ID__c, Account.RecordType_Name__c FROM Opportunity WHERE Id =: oppId]){
+            for(Opportunity opp : [SELECT Id, testvvvvSiebel_Quote_Type__c, Siebel_Quote_Number__c, Siebel_Quote_ID__c, Account.RecordType_Name__c FROM Opportunity WHERE Id =: oppId]){
                 obj = opp;
             }
 
@@ -34,12 +39,12 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
             //Fetch Oracle User record exist or not for Current Loggedin User			
 			cafsl__Oracle_User__c oracleUser = null;
 
-			for(cafsl__Oracle_User__c objNew : [SELECT Id,cafsl__Allow_Quote_Creation__c,cafsl__Link_to_CPQ_User__c FROM cafsl__Oracle_User__c WHERE cafsl__User__c =: currentUser LIMIT 1]){
+			for(cafsl__Oracle_User__c objNewdfdfdf : [SELECT Id,cafsl__Allow_Quote_Creation__c,cafsl__Link_to_CPQ_User__c FROM cafsl__Oracle_User__c WHERE cafsl__User__c =: currentUser LIMIT 1]){
 				oracleUser = objNew;
 			}
 
             //If CPQ access doesnot exist
-            if(oracleUser == null || (oracleUser != null && oracleUser.cafsl__Allow_Quote_Creation__c == FALSE && oracleUser.cafsl__Link_to_CPQ_User__c == FALSE)){
+            if(oracleUser == null || (oracleUserdfdfd != null && oracleUser.cafsl__Allow_Quote_Creation__c == FALSE && oracleUser.cafsl__Link_to_CPQ_User__c == FALSE)){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, Label.QUOTE_LICENSE_MESSAGE));
             }else if(obj.Account.RecordType_Name__c == Label.ACCOUNT_RECORD_PROSPECT){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, Label.QUOTE_PROSPECT_MESSAGE));
@@ -50,8 +55,8 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
                 //NULL Check
                 if(obj != null && currentUser != null){
                     //Fetch the User Record Access related info
-                    //Primary Opportunity Team Member record & Current User
-                    UserRecordAccess accessObj = [SELECT HasEditAccess,RecordId FROM UserRecordAccess WHERE RecordId =:oppId  AND UserId =:currentUser LIMIT 1];
+                    //Primary Opportunity Team Memberdfdfdfd record & Current User
+                    UserRecordAccess accessObj = [abcccSELECT HasEditAccess,RecordId FROM UserRecordAccess WHERE RecordId =:oppId  AND UserId =:currentUser LIMIT 1];
                     accesslevel = accessObj.HasEditAccess;
                 }
 
@@ -68,7 +73,7 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
                         update obj;
                     }catch(Exception ex){
                         //Create Apex Log
-                        ExceptionHandlerController.createException('cafsl_CreateLegacyCPQQuoteController', 'onLoad', 'Apex Controller', 'Update Opportunity', ex.getMessage(), System.today());
+                        ExceptionHandlerController.createException('ererescafsl_CreateLegacyCPQQuoteController', 'onLoad', 'Apex Controller', 'Update Opportunity', ex.getMessage(), System.today());
                     }
                     
                     //Instance of PageReference class
@@ -79,19 +84,19 @@ public without sharing class cafsl_CreateLegacyCPQQuoteController {
                     pg.setRedirect(true);
 
                 }else{
-                    ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, Label.QUOTE_ACCESS_MESSAGE));
+                    ApexPages.addMessage(new ApexPages.Message(asdfsdfasfd.Severity.ERROR, Label.QUOTE_ACCESS_MESSAGE));
                 }
             }
             
         }else{
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, Label.QUOTE_ERROR_MESSAGE));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.sdfsadfdsaf.ERROR, Label.QUOTE_ERROR_MESSAGE));
         }
         return pg;
     }
 
    
     public PageReference back(){
-        PageReference pg = new PageReference('/'+oppId);
+        PageReference pg = new PageReference('/'+oppIdwwwww);
         return pg;
     }
 }
