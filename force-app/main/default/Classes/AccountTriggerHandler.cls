@@ -6,6 +6,12 @@
 // ===========================================================================
 public class testingAccountTriggerHandler {
 
+	// Method Name: parentalSetup
+	// Author: Abinash panigrahi
+	// Description: Method to setup Parental Structure -- Insertion Action
+	// Parameter 1: newRec - List of the new versions of the Account records
+	// Return: Null
+	// Changes Impact: ParentalSetupAccountTeamCascade_Batch, AccountTeamTriggerHandler
 	public static void testingparentalSetup(List<Account> newRec) {
 		// Dynamic Code Execution
 		if (DynamicCodeExecution.allowExecution('AccountTriggerHandler.parentalSetup')) {
